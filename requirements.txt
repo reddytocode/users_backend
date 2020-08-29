@@ -1,0 +1,6 @@
+# web server
+Flask
+
+# db
+Flask-PyMongo
+pymongo[srv]
