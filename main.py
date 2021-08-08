@@ -8,7 +8,7 @@ from User import User
 
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb+srv://tesis:tesis@cluster0.r5ydz.mongodb.net/huellas?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://balboa:balboa@cluster0.upvhr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 
@@ -19,6 +19,7 @@ def registro():
     res = atleta.save(mongo)
     return jsonify(**res)
 
+
 @app.route('/user/save', methods=["POST"])
 def saveUser():
     content = request.json
@@ -27,9 +28,11 @@ def saveUser():
     res = user.save(mongo)
     return jsonify(**res)
 
+
 @app.route('/users')
 def getAllUsers():
     return jsonify(users=User.getAll(mongo))
+
 
 def gen_message(msg):
     return jsonify(message=msg)
@@ -38,7 +41,6 @@ def gen_message(msg):
 @app.route("/login", methods=["POST"])
 def login():
     content = request.json
-    # email, password
     atleta = Atleta.find_by_email(mongo, content["email"])
     if content["password"] == atleta.password:
         return gen_message("Bienvenido")
