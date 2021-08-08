@@ -12,8 +12,16 @@ pip install virtualenv
 
 ### Crear entorno virtual
 
+(Linux/MacOS)
+
 ```
 virtualenv venv
+```
+
+(Windows)
+
+```
+python -m virtualenv venv
 ```
 
 Dependiendo el sistema operativo activar el entorno virtual
@@ -21,6 +29,12 @@ _Linux_
 
 ```
 source venv/bin/activate
+```
+
+_Windows_
+
+```
+.\env\Scripts\activate
 ```
 
 ### Instalar las dependencias
