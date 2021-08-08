@@ -22,3 +22,15 @@ _Linux_
 ```
 source venv/bin/activate
 ```
+
+### Instalar las dependencias
+
+```
+pip install -r requirements.txt
+```
+
+### Correr la aplicación
+
+```
+python main.py
+```
