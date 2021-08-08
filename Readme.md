@@ -34,7 +34,7 @@ source venv/bin/activate
 _Windows_
 
 ```
-.\env\Scripts\activate
+.\venv\Scripts\activate
 ```
 
 ### Instalar las dependencias
