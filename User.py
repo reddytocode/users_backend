@@ -1,23 +1,24 @@
-current_user = None
-from flask_pymongo import PyMongo
 from pymongo.cursor import Cursor
+from flask_pymongo import PyMongo
+current_user = None
 
 
 def get_document(mongo):
     return mongo.db["huellas"]["user"]
 
+
 class Dedo:
     def to_json(self):
-            return {
-                "category": self.category,
-                "distance": self.distance,
-                "huella_b64": self.huella_b64
-            }
+        return {
+            "category": self.category,
+            "distance": self.distance,
+            # "huella_b64": self.huella_b64
+        }
 
     def __init__(self):
         self.category = None
         self.distance = 0
-        self.huella_b64 = ""
+        # self.huella_b64 = ""
 
     def is_valid(self):
         valid = self.category is not None
@@ -48,7 +49,8 @@ class User:
             # res
             "res_primer_analisis": self.res_primer_analisis,
             "formula_digital": self.formula_digital,
-            "categ": self.categ,  # = {"arco": 0, "presilla": 0, "verticilo": 0}
+            # = {"arco": 0, "presilla": 0, "verticilo": 0}
+            "categ": self.categ,
             "d10": self.d10,
             "sqtl": self.sqtl,
             "recomendacion1": self.recomendacion1,
@@ -110,7 +112,7 @@ class User:
             users.append(user.to_json())
         return users
 
-    def create(self, name, lastName, ci, fechaNac, telf, genero, pulgar_i, anular_i, medio_i, indice_i, menhique_i, pulgar_d, anular_d, medio_d, indice_d, menhique_d, res_primer_analisis, formula_digital, categ, d10, sqtl, recomendacion1="", recomendacion2="",**args):
+    def create(self, name, lastName, ci, fechaNac, telf, genero, pulgar_i, anular_i, medio_i, indice_i, menhique_i, pulgar_d, anular_d, medio_d, indice_d, menhique_d, res_primer_analisis, formula_digital, categ, d10, sqtl, recomendacion1="", recomendacion2="", **args):
         self.name = name
         self.lastName = lastName
         self.ci = ci
