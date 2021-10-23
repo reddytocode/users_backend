@@ -12,13 +12,11 @@ class Dedo:
         return {
             "category": self.category,
             "distance": self.distance,
-            # "huella_b64": self.huella_b64
         }
 
     def __init__(self):
         self.category = None
         self.distance = 0
-        # self.huella_b64 = ""
 
     def is_valid(self):
         valid = self.category is not None
@@ -56,33 +54,6 @@ class User:
             "recomendacion1": self.recomendacion1,
             "recomendacion2": self.recomendacion2
         }
-
-    # def to_json(self):
-    #     return {
-    #         "name": self.name,
-    #         "lastName": self.lastName,
-    #         "ci": self.ci,
-    #         "fechaNac": self.fechaNac,
-    #         "telf": self.telf,
-    #         "genero": self.genero,
-    #         "pulgar_i": self.pulgar_i.to_json(),
-    #         "anular_i": self.anular_i.to_json(),
-    #         "medio_i": self.medio_i.to_json(),
-    #         "indice_i": self.indice_i.to_json(),
-    #         "menhique_i": self.menhique_i.to_json(),
-    #
-    #         "pulgar_d": self.pulgar_d.to_json(),
-    #         "anular_d": self.anular_d.to_json(),
-    #         "medio_d": self.medio_d.to_json(),
-    #         "indice_d": self.indice_d.to_json(),
-    #         "menhique_d": self.menhique_d.to_json(),
-    #         # res
-    #         "res_primer_analisis": self.res_primer_analisis,
-    #         "formula_digital": self.formula_digital,
-    #         "categ": self.categ,  # = {"arco": 0, "presilla": 0, "verticilo": 0}
-    #         "d10": self.d10,
-    #         "sqtl": self.sqtl
-    #     }
 
     @staticmethod
     def find_by_email(mongo: PyMongo, email: str):
@@ -209,6 +180,10 @@ class User:
             self.res_primer_analisis = "RESISTENCIA Y COORDINACION"
             self.formula_digital = "10W"
         print("primer analisis: ", self.res_primer_analisis)
+    
+    def remove(mongo, ci):
+        document = get_document(mongo)
+        document.remove({"ci": ci})
 
 
 def set_user(user):

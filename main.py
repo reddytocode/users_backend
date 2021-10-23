@@ -34,6 +34,11 @@ def getAllUsers():
     return jsonify(users=User.getAll(mongo))
 
 
+@app.route('/user/<ci>', methods=["DELETE"])
+def remove_user(ci):
+    return jsonify(User.remove(mongo, ci))
+
+
 def gen_message(msg):
     return jsonify(message=msg)
 
